@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
-from models.Inception_V4 import InceptionV4
-from models.Inception_resnet_V1 import InceptionResNet_V1
+from models.inception.Inception_resnet_V1 import InceptionResNet_V1
 from dataset_process import input_pipeline
-from configuration import IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS, \
-     EPOCHS, save_model_dir, save_every_n_epoch, \
-     train_tfrecord, valid_tfrecord, test_tfrecord
+from configuration import cfg
+
+train_tfrecord = cfg.MODEL.TFRCORD_TRAIN
+valid_tfrecord = cfg.MODEL.TFRCORD_VALID
+IMAGE_HEIGHT   = cfg.MODEL.INP_HEIGHT
+IMAGE_WIDTH    = cfg.MODEL.INP_WIDTH
+CHANNELS       = cfg.MODEL.CHANELS
+EPOCHS         = cfg.MODEF.EPOCHS
+save_model_dir = cfg.MODEL.SAVE_DIR
 
 
 if __name__ == '__main__':
@@ -87,7 +92,7 @@ if __name__ == '__main__':
         valid_loss.reset_states()
         valid_accuracy.reset_states()
 
-        if (epoch+1) % save_every_n_epoch == 0:
+        if (epoch+1) % cfg.MODEL.SAVE_FREQ == 0:
             model.save_weights(filepath=save_model_dir + 'epoch-{}'.format(epoch), save_format='tf')
 
     with summary_writer.as_default():

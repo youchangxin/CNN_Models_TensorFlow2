@@ -4,8 +4,18 @@ import pathlib
 import os
 import numpy as np
 
-from configuration import IMAGE_HEIGHT, IMAGE_WIDTH, CHANNELS, BATCH_SIZE, \
-    train_dir, test_dir, valid_dir, train_tfrecord, valid_tfrecord
+from configuration import cfg
+
+train_tfrecord = cfg.MODEL.TFRCORD_TRAIN
+valid_tfrecord = cfg.MODEL.TFRCORD_VALID
+IMAGE_HEIGHT   = cfg.MODEL.INP_HEIGHT
+IMAGE_WIDTH    = cfg.MODEL.INP_WIDTH
+CHANNELS       = cfg.MODEL.CHANELS
+EPOCHS         = cfg.MODEF.EPOCHS
+BATCH_SIZE     = cfg.MODEL.BATCH_SIZE
+train_dir      = cfg.MODEL.TRAIN_DIR
+valid_dir      = cfg.MODEL.VALID_DIR
+
 
 
 def rawdata_to_tfrecord(dataset_dir, tfrecord_path):
@@ -43,8 +53,8 @@ def _parse_example(example_string):
 
 
 def _decode_and_resize(image, label):
-#    image_strings = tf.io.read_file(filename)
-#    image_decoded = tf.io.decode_jpeg(image_strings, channels=CHANNELS)
+#   image_strings = tf.io.read_file(filename)
+#   image_decoded = tf.io.decode_jpeg(image_strings, channels=CHANNELS)
     image_resized = tf.image.resize(image, [IMAGE_HEIGHT, IMAGE_WIDTH])
     image_norm = image_resized / 255.0
     return image_norm, label

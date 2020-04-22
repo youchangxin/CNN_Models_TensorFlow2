@@ -263,9 +263,9 @@ class Reduction_B(tf.keras.layers.Layer):
                                                     strides=2,
                                                     padding='valid')
         self.b2_conv1 = BasicConv2D(filters=192,
-                                   kernel_size=(1, 1),
-                                   strides=1,
-                                   padding='same')
+                                    kernel_size=(1, 1),
+                                    strides=1,
+                                    padding='same')
         self.b2_conv2 = BasicConv2D(filters=192,
                                     kernel_size=(3, 3),
                                     strides=2,

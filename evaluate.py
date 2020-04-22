@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
-from configuration import save_model_dir, test_tfrecord
+from configuration import cfg
 from dataset_process import input_pipeline
-from models.Inception_V4 import InceptionV4
+
+test_tfrecord = cfg.MODEL.MODEL.SAVE_DIR
+save_model_dir = cfg.MODEL.TFRCORD_TEST
 
 if __name__ == '__main__':
 

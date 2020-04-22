@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
-from models.Inception_V4_modules import Stem, Inception_A, \
+from models.inception.Inception_V4_modules import Stem, Inception_A, \
     Inception_B, Inception_C, Reduction_A, Reduction_B
-from configuration import NUM_CLASSES
+from configuration import cfg
+
+NUM_CLASSES = cfg.MODEL.NUM_CLASSES
 
 
 def build_inception_a(n):

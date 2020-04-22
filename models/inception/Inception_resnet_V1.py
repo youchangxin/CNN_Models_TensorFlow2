@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
-from models.Inception_V4_modules import BasicConv2D, Conv2dLinear, Reduction_A
-from  configuration import NUM_CLASSES
+from models.inception.Inception_V4_modules import BasicConv2D, Conv2dLinear, Reduction_A
+from configuration import cfg
+
+NUM_CLASSES = cfg.MODEL.NUM_CLASSES
 
 
 

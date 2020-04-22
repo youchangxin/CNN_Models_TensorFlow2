@@ -1,19 +1,28 @@
 # -*- coding: utf-8 -*-
-EPOCHS = 30
-BATCH_SIZE = 32
-NUM_CLASSES = 2
-IMAGE_HEIGHT = 299
-IMAGE_WIDTH = 299
-CHANNELS = 3
-save_model_dir = r"saved_model/"
-save_every_n_epoch = 5
-dataset_dir = "dataset"
-train_dir = dataset_dir + r"\train"
-valid_dir = dataset_dir + r"\valid"
-test_dir = dataset_dir + r"\test"
-train_tfrecord = dataset_dir + r"/train.tfrecord"
-valid_tfrecord = dataset_dir + r"/valid.tfrecord"
-test_tfrecord = dataset_dir + r"/test.tfrecord"
+from easydict import EasyDict as edict
+
+
+__C                             = edict()
+# Consumers can get config by: from config import cfg
+cfg                             = __C
+
+# YOLO section
+__C.MODEL                       = edict()
+__C.MODEL.EPOCHS                = 30
+__C.MODEL.BATCH_SIZE            = 16
+__C.MODEL.INP_HEIGHT            = 299
+__C.MODEL.INP_WIDTH             = 299
+__C.MODEL.CHANELS               = 3
+__C.MODEL.SAVE_DIR              = "saved_model/"
+__C.MODEL.SAVE_FREQ             = 5
+__C.MODEL.TRAIN_DIR             = "dataset/train"
+__C.MODEL.VALID_DIR             = "dataset/valid"
+__C.MODEL.TEST_DIR              = "dataset/test"
+__C.MODEL.TFRCORD_TRAIN         = "dataset/train.tfrecord"
+__C.MODEL.TFRCORD_VALID         = "dataset/valid.tfrecord"
+__C.MODEL.TFRCORD_TEST          = "dataset/test.tfrecord"
+__C.MODEL.NUM_CLASSES           = 20
+
 # VALID_SET_RATIO = 1 - TRAIN_SET_RATIO - TEST_SET_RATIO
 TRAIN_SET_RATIO = 0.6
 TEST_SET_RATIO = 0.2
